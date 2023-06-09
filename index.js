@@ -19,6 +19,12 @@ closeButton.addEventListener('click', () => {
   modal.classList.add('closed');
 });
 
+modal.addEventListener('click', (e) => {
+  if (e.target.className == 'modal') {
+    modal.classList.add('closed');
+  }
+});
+
 const settings = document.querySelector('.settings');
 
 settings.addEventListener('click', () => {
