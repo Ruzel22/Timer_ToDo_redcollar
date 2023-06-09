@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/main.css" />
+    <title>PomodoroTimer</title>
+  </head>
+  <body>
+    <div class="modal closed">
+      <div class="window">
+        <button class="close">
+          <img width="15" src="/images/remove-black-sm.png" alt="" />
+        </button>
+        <div class="inputs">
+          <div>
+            <label>Time</label>
+            <input
+              class="time-input"
+              type="number"
+              id="tentacles"
+              name="tentacles"
+              min="00"
+              max="60"
+            />
+          </div>
+          <div>
+            <label>Break</label>
+            <input
+              class="break-input"
+              type="number"
+              id="tentacles"
+              name="tentacles"
+              min="10"
+              max="100"
+            />
+          </div>
+          <div>
+            <label>Long break</label>
+            <input
+              class="long-break-input"
+              type="number"
+              id="tentacles"
+              name="tentacles"
+              min="10"
+              max="100"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="container">
+      <button class="settings">
+        <img width="30" src="/images/config-white.png" alt="" />
+      </button>
+      <div class="top-container">
+        <div id="work-timer" class="timer">
+          <p class="label" id="work">Work</p>
+          <div>
+            <p id="w_minutes">25</p>
+            <p id="semicolon">:</p>
+            <p id="w_seconds">00</p>
+          </div>
+        </div>
+
+        <div class="cycles-container">
+          <p class="label" id="cycles">Cycles</p>
+          <p id="counter">0</p>
+        </div>
+        <div id="break-timer" class="timer">
+          <p class="label">Break</p>
+
+          <div>
+            <p id="b_minutes">05</p>
+            <p id="semicolon">:</p>
+            <p id="b_seconds">00</p>
+          </div>
+          <div class="toggle">
+            <p class="long-break-label">Long break</p>
+            <label class="switch">
+              <input class="break-checkbox" type="checkbox" />
+              <span class="slider round"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="bottom-container">
+        <button id="start" class="btn">Start</button>
+        <button id="stop" class="btn">Pause</button>
+        <button id="reset" class="btn">Reset</button>
+      </div>
+      <div class="task-container">
+        <h2 class="task-headling">Tasks</h2>
+        <input placeholder="Add task" type="text" />
+        <div class="task-input-btns">
+          <button class="task-input-btn-cancel">Clear</button>
+          <button class="task-input-btn-save">Save</button>
+        </div>
+        <div class="tasks"></div>
+      </div>
+    </div>
+    <script src="./index.js"></script>
+  </body>
+</html>
