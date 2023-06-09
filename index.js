@@ -141,7 +141,7 @@ function timer() {
 function stopInterval() {
   clearInterval(startTimer);
 }
-//Tasks
+//classes for tasks
 window.addEventListener('DOMContentLoaded', () => {
   let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
   class Card {
@@ -192,7 +192,7 @@ window.addEventListener('DOMContentLoaded', () => {
       ? ((addBtn.style.opacity = '0'), (cancelBtn.style.opacity = '0'))
       : ((addBtn.style.opacity = '1'), (cancelBtn.style.opacity = '1'));
   });
-
+  //add task
   addBtn.addEventListener('click', () => {
     tasks.push({ task: taskInput.value, isCompleted: false });
 
@@ -202,8 +202,14 @@ window.addEventListener('DOMContentLoaded', () => {
       taskInput.value = '';
       (addBtn.style.opacity = '0'), (cancelBtn.style.opacity = '0');
     }
-  });
 
+    //show/hide "no tasks yet" div
+    const noTaskBlock = document.querySelector('.no-tasks-container');
+    tasks.length == 0
+      ? (noTaskBlock.style.display = 'block')
+      : (noTaskBlock.style.display = 'none');
+  });
+  //cancel adding task
   cancelBtn.addEventListener('click', (target) => {
     if (taskInput.value != '') {
       taskInput.value = '';
@@ -216,28 +222,37 @@ window.addEventListener('DOMContentLoaded', () => {
   const editBtn = document.querySelector('.edit');
 
   document.querySelector('.tasks').addEventListener('click', (event) => {
+    //deleting task
     if (event.target.className == 'delete') {
       let task = event.target.parentNode.parentNode.parentNode;
 
       tasks = tasks.filter((obj) => obj.task !== task.querySelector('p').innerHTML);
       task.parentNode.removeChild(task);
       localStorage.setItem('tasks', JSON.stringify(tasks));
+
+      //show/hide "no tasks yet" div
+      const noTaskBlock = document.querySelector('.no-tasks-container');
+      tasks.length == 0
+        ? (noTaskBlock.style.display = 'block')
+        : (noTaskBlock.style.display = 'none');
     }
+    //editing task
     if (event.target.className == 'edit') {
       let editingTask = document.querySelector('.tasks .editing');
       if (editingTask) {
         editingTask.classList.remove('editing');
       } else console.log(document.querySelector('.editing'));
-
       let task = event.target.parentNode.parentNode.parentNode;
       task.classList.add('editing');
       task.querySelector('input').focus();
       task.querySelector('input').value = task.querySelector('p').innerHTML;
     }
+    //cancel editing task
     if (event.target.className == 'task-edit-cancel') {
       let task = event.target.parentNode.parentNode;
       task.classList.remove('editing');
     }
+    //save edited task
     if (event.target.className == 'task-edit-save') {
       let task = event.target.parentNode.parentNode;
       let taskIndex = tasks.findIndex((obj) => obj.task == task.querySelector('p').innerHTML);
@@ -246,6 +261,7 @@ window.addEventListener('DOMContentLoaded', () => {
       task.querySelector('p').innerHTML = task.querySelector('input').value;
       task.classList.remove('editing');
     }
+    //make task complete/uncomplete
     if (event.target.classList.contains('task')) {
       if (event.target.classList.contains('completed')) {
         tasks.find((obj) => obj.task == event.target.querySelector('p').innerHTML);

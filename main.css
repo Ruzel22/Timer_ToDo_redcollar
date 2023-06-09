@@ -401,5 +401,14 @@ button{
 .editing .task-edit-cancel{
   display: block
 }
-
+.no-tasks-container{
+  border: 4px dashed rgb(251, 227, 195);
+  background-color: rgb(245, 209, 162);
+  padding: 30px 20px;
+  border-radius: 25px;
+  color: rgb(255, 242, 224);
+  font-size: 19px;
+  text-align: center;
+  font-weight: bold;
+}
 
