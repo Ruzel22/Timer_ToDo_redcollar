@@ -1,32 +1,32 @@
 //timer buttons
-var start = document.getElementById('start');
-var stop = document.getElementById('stop');
-var reset = document.getElementById('reset');
+const start = document.getElementById('start');
+const stop = document.getElementById('stop');
+const reset = document.getElementById('reset');
 stop.disabled = true;
 reset.disabled = true;
 
 //timer variables
-var wm = document.getElementById('w_minutes');
-var ws = document.getElementById('w_seconds');
+const wm = document.getElementById('w_minutes');
+const ws = document.getElementById('w_seconds');
 
-var bm = document.getElementById('b_minutes');
-var bs = document.getElementById('b_seconds');
+const bm = document.getElementById('b_minutes');
+const bs = document.getElementById('b_seconds');
 
 //modal window
-var modal = document.querySelector('.modal');
-var closeButton = document.querySelector('.close');
+const modal = document.querySelector('.modal');
+const closeButton = document.querySelector('.close');
 closeButton.addEventListener('click', () => {
   modal.classList.add('closed');
 });
 
-var settings = document.querySelector('.settings');
+const settings = document.querySelector('.settings');
 
 settings.addEventListener('click', () => {
   modal.classList.remove('closed');
 });
-var timeInput = document.querySelector('.time-input');
-var breakInput = document.querySelector('.break-input');
-var longBreakInput = document.querySelector('.long-break-input');
+const timeInput = document.querySelector('.time-input');
+const breakInput = document.querySelector('.break-input');
+const longBreakInput = document.querySelector('.long-break-input');
 
 timeInput.valueAsNumber = 25;
 breakInput.valueAsNumber = 5;
