@@ -179,6 +179,14 @@ window.addEventListener('DOMContentLoaded', () => {
     new Card(element.task, element.isCompleted, document.querySelector('.tasks')).render();
   });
 
+  function ShowNoTasksBlock() {
+    //show/hide "no tasks yet" div
+    const noTaskBlock = document.querySelector('.no-tasks-container');
+    tasks.length < 1 ? (noTaskBlock.style.display = 'block') : (noTaskBlock.style.display = 'none');
+  }
+
+  ShowNoTasksBlock();
+
   //adding new tasks
   const taskInput = document.querySelector('.task-container input');
   const addBtn = document.querySelector('.task-input-btn-save');
@@ -204,10 +212,7 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
     //show/hide "no tasks yet" div
-    const noTaskBlock = document.querySelector('.no-tasks-container');
-    tasks.length == 0
-      ? (noTaskBlock.style.display = 'block')
-      : (noTaskBlock.style.display = 'none');
+    ShowNoTasksBlock();
   });
   //cancel adding task
   cancelBtn.addEventListener('click', (target) => {
@@ -231,10 +236,7 @@ window.addEventListener('DOMContentLoaded', () => {
       localStorage.setItem('tasks', JSON.stringify(tasks));
 
       //show/hide "no tasks yet" div
-      const noTaskBlock = document.querySelector('.no-tasks-container');
-      tasks.length == 0
-        ? (noTaskBlock.style.display = 'block')
-        : (noTaskBlock.style.display = 'none');
+      ShowNoTasksBlock();
     }
     //editing task
     if (event.target.className == 'edit') {
